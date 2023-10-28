@@ -17,8 +17,9 @@ def creation_krlist():
         shell=True, creationflags=subprocess.CREATE_NO_WINDOW,
     )
 
-def patch_ze2_bin():
-    """patch le bin de vlr"""
+def patch_fichiers():
+    """transforme les fichiers dans mod_dlg et fichiers compréhensibles pour le jeu,
+    et les mets dans patch_res"""
     subprocess.run(
         tool_vlr + "patch",
         shell=True, creationflags=subprocess.CREATE_NO_WINDOW,
@@ -30,3 +31,4 @@ def repack_ze2_bin():
         tool_vlr + "repack",
         shell=True, creationflags=subprocess.CREATE_NO_WINDOW,
     )
+
