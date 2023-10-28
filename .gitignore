@@ -1,0 +1,14 @@
+*.lua
+*.json
+*.log
+*.txt
+*.spec
+
+/build
+/dist
+/__pycache__
+
+zevlr.exe
+ze2_data_jp.bin
+ze2_data_en_us.bin
+credentials.py
