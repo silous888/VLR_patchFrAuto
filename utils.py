@@ -44,7 +44,7 @@ def remplace_guillemet(texte):
     Returns:
         str: texte modifié
     """
-    return texte.replace('"', "Ｄ")
+    return texte.replace('"', "\\\"")
 
 
 def supprime_amp(texte):

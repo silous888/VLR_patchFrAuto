@@ -2,6 +2,7 @@ import winreg
 import os
 
 import utils
+import shutil
 
 
 def trouver_dossier_steam():
@@ -140,6 +141,4 @@ def copier_bin_dans_VLR_data_patch(chemin_bin):
     dossier_tool_complet = dossier_projet + "\\" + dossier_tool
     utils.logging.error(dossier_tool_complet)
 
-    copier_fichier_progression(
-        chemin_bin, dossier_tool_complet + "\\ze1_data_en_us.bin", afficher_progression
-    )
+    shutil.copy(chemin_bin, dossier_tool_complet)

@@ -4,6 +4,7 @@ class NomsColonnes:
     """
 
     DIALOGUE = ["id", "name", "text", "textFr"]
+    SYSTEM = ["id", "id", "text", "textFr"]
 
 
 
@@ -23,7 +24,9 @@ def get_matrice_simplifie(mat, liste_noms_colonnes):
         print("valeur non trouvée")
         return []
     new_mat = []
-    for i in range(2, len(mat)):  # les sheet ont des datas intéressantes à partir de la ligne 2
+    for i in range(1, len(mat)):  # les sheet ont des datas intéressantes à partir de la ligne 2
+        if len(mat[i]) < 2:
+            continue
         new_mat.append([mat[i][position_id], mat[i][position_name], mat[i][position_eng]])
         new_mat[-1].append(_ajouter_texte_fr_dans_mat_simp(mat[i], position_fr, position_eng))
     return new_mat

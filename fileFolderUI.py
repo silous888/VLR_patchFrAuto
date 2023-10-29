@@ -12,7 +12,6 @@ from PyQt5.QtCore import pyqtSignal, pyqtSlot, QDir, QObject, QThread, QRect, QS
 from Ui_ihm import Ui_MainWindow
 
 from uiChoixFichierPatch import CheckboxWindowFile
-from uiChoixImagePatch import CheckboxWindowImage
 from utils import etats_liste
 # -------------------- Constant -------------------
 
@@ -63,7 +62,7 @@ class _Worker(QObject):
     signal_listes_fichiers_bool = pyqtSignal(list)
     signal_listes_images_bool = pyqtSignal(list)
     
-    tailles = [16, 54, 8]
+    tailles = [17, 139, 5]
     tailles_images = [9, 6, 5, 10, 10, 4, 9, 3, 9, 4]
     # Initialiser la liste principale
     liste_choix_fichiers = []
@@ -147,7 +146,7 @@ class _MainWindow(QMainWindow):
         self.ui.pushButton_browse.clicked.connect(self.find_element)
         self.ui.pushButton_process.clicked.connect(self.run_process)
         self.ui.pushButton_choix_fichier.clicked.connect(self.ouvrir_choix_fichier)
-        self.ui.pushButton_choix_image.clicked.connect(self.ouvrir_choix_image)
+        # self.ui.pushButton_choix_image.clicked.connect(self.ouvrir_choix_image)
         self.ui.fileEdit_path.textChanged.connect(self.hide_done)
         self.ui.checkBox_fichiers.clicked.connect(self.update_tous_les_fichiers)
         self.ui.checkBox_images.clicked.connect(self.update_toutes_les_images)
@@ -248,14 +247,14 @@ class _MainWindow(QMainWindow):
         time.sleep(0.3)
         self.change_etats_checkbox_fichiers(self.m_worker.liste_choix_fichiers)
 
-    @pyqtSlot()
-    def ouvrir_choix_image(self):
-        window_images = CheckboxWindowImage()
-        window_images.exec_()
-        checkbox_values_images = window_images.get_checkbox_values()
-        self.m_worker.signal_listes_images_bool.emit(checkbox_values_images)
-        time.sleep(0.3)
-        self.change_etats_checkbox_images(self.m_worker.liste_choix_images)
+    # @pyqtSlot()
+    # def ouvrir_choix_image(self):
+    #     window_images = CheckboxWindowImage()
+    #     window_images.exec_()
+    #     checkbox_values_images = window_images.get_checkbox_values()
+    #     self.m_worker.signal_listes_images_bool.emit(checkbox_values_images)
+    #     time.sleep(0.3)
+    #     self.change_etats_checkbox_images(self.m_worker.liste_choix_images)
     
     @pyqtSlot()
     def update_tous_les_fichiers(self):
