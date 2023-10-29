@@ -9,12 +9,14 @@ DOSSIER_LUA_DIALOGUE = "VLR_patch_data\\mod_dlg\\"
 
 def modifier_texte_dans_fichier(nom_fichier, mat):
 
-
+    # utils.logging.error(DOSSIER_LUA_DIALOGUE + nom_fichier + " on est lecture")
     with open(DOSSIER_LUA_DIALOGUE + nom_fichier, 'r', encoding='utf-8') as fichier:
+        utils.logging.error(DOSSIER_LUA_DIALOGUE + nom_fichier + " on est lecture 2")
         contenu_lua = fichier.read()
+        # utils.logging.error(DOSSIER_LUA_DIALOGUE + nom_fichier + " on est lecture 3")
 
     for index in range(len(mat)):
-
+        # utils.logging.error(DOSSIER_LUA_DIALOGUE + nom_fichier + " on est " + str(index))
         id = mat[index][0]
         name = mat[index][1]
         text = utils.remplace_guillemet(mat[index][3])
@@ -30,6 +32,7 @@ def modifier_texte_dans_fichier(nom_fichier, mat):
 
 
     with open(DOSSIER_LUA_DIALOGUE + nom_fichier, 'w', encoding='utf-8') as fichier:
+        # utils.logging.error(DOSSIER_LUA_DIALOGUE + nom_fichier + " on est ecriture")
         fichier.write(contenu_modifie)
 
 

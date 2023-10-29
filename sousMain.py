@@ -7,6 +7,7 @@ import listeFichier
 import utils
 import os
 import shutil
+import time
 #import ImageTelechargement
 
 
@@ -48,6 +49,7 @@ def recompiler_jeu(chemin_bin_steam):
         os.remove(chemin_bin_us_logiciel)
     zeVLRtool.patch_fichiers()
     zeVLRtool.repack_ze2_bin()
+    time.sleep(0.3)
     os.rename("VLR_patch_data\\patch_bin\\ze2_data_jp.bin", chemin_bin_us_logiciel)
     shutil.move(chemin_bin_us_logiciel, chemin_bin_steam)
 
