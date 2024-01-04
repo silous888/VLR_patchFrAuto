@@ -1,5 +1,5 @@
 
-LISTE_NOM_FICHIER_NOVEL = ["000004e6.lua", "0000044d.lua",
+LIST_FILENAME_NOVEL_ENG = ["000004e6.lua", "0000044d.lua",
                            "000003cf.lua", "0000040b.lua",
                            "000004b3.lua", "0000049a.lua", "000004c9.lua",
                            "0000042b.lua", "00000470.lua", "00000443.lua", "000003a5.lua", "0000042a.lua", "00000432.lua", "000003ab.lua", "000004df.lua", "000004c4.lua", "000003da.lua", "0000049e.lua", "000004a5.lua",
@@ -18,18 +18,46 @@ LISTE_NOM_FICHIER_NOVEL = ["000004e6.lua", "0000044d.lua",
                            "00000465.lua", "00000441.lua", "0000040d.lua", "00000464.lua", "000003c7.lua", "000003e3.lua", "000004d4.lua", "00000483.lua", "000003a3.lua",
                            "0000044e.lua", "00000431.lua", "000003ba.lua", "000003eb.lua", "000003f8.lua", "000004c2.lua", "000004c1.lua"]
 
+LIST_FILENAME_NOVEL_JP = ["00000433.lua", "0000047a.lua",
+                          "00000414.lua", "000004b8.lua",
+                          "00000485.lua", "0000043f.lua", "000004d1.lua",
+                          "0000041c.lua", "0000048d.lua", "000004b9.lua", "00000436.lua", "00000486.lua", "000003e6.lua", "00000426.lua", "0000046c.lua", "000004e4.lua", "000003cc.lua", "000003cb.lua", "000003ef.lua",
+                          "0000048b.lua", "00000451.lua", "0000039f.lua", "000004ce.lua", "00000424.lua", "000003bb.lua",
+                          "00000454.lua", "00000415.lua", "000003fc.lua", "000004b5.lua", "00000499.lua", "0000049f.lua", "00000469.lua", "000003c0.lua", "000003f6.lua", "00000493.lua",
+                          "000003d4.lua", "000004eb.lua", "0000043b.lua", "00000421.lua", "00000495.lua", "000003ed.lua", "000003b1.lua", "000004d3.lua", "00000445.lua", "0000044c.lua",
+                          "000004e0.lua", "000004a1.lua", "000003fa.lua", "000003de.lua", "00000453.lua", "000003af.lua", "000004d5.lua",
+                          "00000425.lua", "000004c0.lua", "00000489.lua", "0000042c.lua", "00000475.lua", "000003d7.lua", "0000049c.lua", "000003e9.lua", "0000045c.lua",
+                          "000004ec.lua", "000004b0.lua", "00000404.lua", "000003e2.lua", "0000041d.lua",
+                          "000004b2.lua", "00000480.lua", "000003c6.lua", "000003ac.lua", "000003b9.lua", "0000041f.lua", "0000045f.lua", "00000476.lua",
+                          "000003b4.lua", "000004c6.lua", "0000041b.lua", "000003fd.lua", "000003ca.lua", "00000478.lua", "000004d9.lua", "0000044f.lua", "0000047c.lua",
+                          "000003bd.lua", "000004cb.lua", "00000420.lua", "00000406.lua", "000003d1.lua", "0000047e.lua", "000004a3.lua",
+                          "000003ec.lua", "00000490.lua", "000003b7.lua", "000004e9.lua", "0000045a.lua", "00000434.lua", "0000049b.lua", "00000410.lua", "000003be.lua", "000004ea.lua",
+                          "00000430.lua", "000003f7.lua", "000004de.lua", "00000411.lua", "00000496.lua", "00000482.lua", "000004ef.lua", "0000044b.lua", "000004a7.lua", "00000403.lua", "00000461.lua",
+                          "000003a1.lua", "000004b4.lua", "000004cd.lua", "00000429.lua", "0000048a.lua", "0000040a.lua", "000003e7.lua", "000003ee.lua", "000003bf.lua", "000004c8.lua", "00000462.lua", "000003b2.lua",
+                          "00000444.lua", "0000040c.lua", "00000427.lua", "000004a8.lua", "00000491.lua", "000003df.lua", "000003f9.lua", "00000412.lua", "000004c5.lua",
+                          "0000040e.lua", "000003d0.lua", "00000459.lua", "00000468.lua", "0000041e.lua", "00000456.lua", "000003b3.lua"]
 
-LISTE_NOM_FICHIER_ESCAPE = ["0000042f.lua", "000004b1.lua", "00000487.lua", "000003db.lua", "00000473.lua", "00000455.lua",
+
+LIST_FILENAME_ESCAPE_ENG = ["0000042f.lua", "000004b1.lua", "00000487.lua", "000003db.lua", "00000473.lua", "00000455.lua",
                             "000003a2.lua", "00000419.lua", "00000442.lua", "00000463.lua", "000003b0.lua", "000004bb.lua",
                             "00000467.lua", "0000043d.lua", "00000418.lua", "00000484.lua", "000003f0.lua"]
 
-LISTE_NOM_FICHIER_ARCHIVE = ["000004bc.lua", "0000046b.lua", "0000044a.lua", "000004c3.lua", "000004e2.lua"]  # archives
+LIST_FILENAME_ESCAPE_JP = ["000004aa.lua", "000004d7.lua", "00000407.lua", "0000048b.lua", "000003d5.lua", "000004db.lua",
+                           "000003fe.lua", "0000043e.lua", "000003e5.lua", "000003ae.lua", "000004af.lua", "00000440.lua",
+                           "0000047d.lua", "000004cc.lua", "00000488.lua", "000004b6.lua", "000004ba.lua"]
 
-LISTE_NOM_FICHIER_SYSTEM = ["00000446.lua", "000003c9.lua", "000003a7.lua",                                  # system
+LIST_FILENAME_ARCHIVE_ENG = ["000004bc.lua", "0000046b.lua", "0000044a.lua", "000004c3.lua", "000004e2.lua"]  # archives
+
+LIST_FILENAME_ARCHIVE_JP = ["000003c5.lua", "00000474.lua", "000004e8.lua", "0000047b.lua", "000003a6.lua"]  # archives
+
+LIST_FILENAME_SYSTEM_ENG = ["00000446.lua", "000003c9.lua", "000003a7.lua",                                  # system
                             "000003ea.lua", "000004d2.lua"]                                                  # divers
 
+LIST_FILENAME_SYSTEM_JP = ["000003ad.lua", "000003d3.lua", "000004da.lua",                                  # system
+                           "0000047f.lua", "00000466.lua"]                                                  # divers
 
-LISTE_NOM_NOVEL_ID = ["s48_17", "s38_40",
+
+LIST_NOVEL_NAME_ID = ["s48_17", "s38_40",
                       "s38_45 - ab_room2", "s00_10",
                       "s00_20 - ab_room", "s00_30", "s10_10",
                       "s10_20 - lounge", "s10_22", "s10_25", "s10_32", "s10_40", "s10_42", "s10_45", "s10_50", "s10_52", "s10_56", "s10_57", "s20_10",
@@ -48,17 +76,17 @@ LISTE_NOM_NOVEL_ID = ["s48_17", "s38_40",
                       "s28_20 - control", "s28_30", "s28_37", "s28_40", "s28_50", "s28_55", "s28_57", "s28_59", "s38_10",
                       "s38_20 - final", "s38_30", "s38_50", "s48_10", "s48_15", "s90_90", "s28_60"]
 
-LISTE_NOM_DLG_ID_COMPLEMENT = []
+LIST_DLG_NAME_ID_EXTEND = []
 
-LISTE_NOM_ESCAPE_ID = ["ab_room2", "ab_room", "lounge", "gaulem", "monitor", "recreation",
+LIST_ESCAPE_NAME_ID = ["ab_room2", "ab_room", "lounge", "gaulem", "monitor", "recreation",
                        "storehouse", "dispensary", "decompression", "chief", "labo", "treat",
                        "cabin", "biotope", "data_room", "control", "final"]
 
-LISTE_NOM_DESC_ID_COMPLEMENT = []
+LIST_DESC_NAME_ID_EXTEND = []
 
-LISTE_NOM_ARCHIVE_ID = ["archive 1", "archive 2", "archive 3", "archive 4", "archive 5"]
+LIST_ARCHIVE_NAME_ID = ["archive 1", "archive 2", "archive 3", "archive 4", "archive 5"]
 
-LISTE_NOM_SYSTEM_ID = ["sysmes 1", "sysmes 2", "sysmes 3",
+LIST_SYSTEM_NAME_ID = ["sysmes 1", "sysmes 2", "sysmes 3",
                        "divers 1", "divers 2"]
 
-LISTE_NOM_AUTRE_ID_COMPLEMENT = []
+LIST_OTHER_NAME_ID_EXTEND = []

@@ -13,8 +13,8 @@ class CheckboxWindowFile(QDialog):
         num_rows = [5, 16, 1]
         num_cols = [4, 9, 5]
         nom_groups = ["ESCAPE", "NARRATION", "SYSTEM"]
-        nom_checkboxes = [filelist.LISTE_NOM_ESCAPE_ID, filelist.LISTE_NOM_NOVEL_ID,
-                          filelist.LISTE_NOM_SYSTEM_ID]
+        nom_checkboxes = [filelist.LIST_ESCAPE_NAME_ID, filelist.LIST_NOVEL_NAME_ID,
+                          filelist.LIST_SYSTEM_NAME_ID]
         self.checkboxes = [[], [], []]  # Pour stocker les checkboxes
 
         check_all_button = []
