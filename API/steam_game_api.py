@@ -162,8 +162,6 @@ def copy_data_from_steam_game_folder(game_folder_name, dest, data_to_copy="", ov
     -7 data_to_copy does not exist
     """
     if not _os.path.exists(dest) or not isinstance(dest, str):
-        print(not _os.path.exists(dest))
-        print(not isinstance(dest, str))
         return -5
     if not isinstance(data_to_copy, str):
         return -6
@@ -173,14 +171,12 @@ def copy_data_from_steam_game_folder(game_folder_name, dest, data_to_copy="", ov
     if not _os.path.exists(_os.path.join(game_path, data_to_copy)):
         return -7
     path_data_to_copy = _os.path.join(game_path, data_to_copy)
-    print(path_data_to_copy)
     if (_os.path.isfile(path_data_to_copy) and (overwrite or
        (not _os.path.exists(_os.path.join(dest, _os.path.basename(data_to_copy)))))):
         _shutil.copy(path_data_to_copy, dest)
 
     for root, _, files in _os.walk(path_data_to_copy):
         paste_folder = _os.path.join(dest, root[len(path_data_to_copy):])
-        print(paste_folder)
         if not _os.path.exists(paste_folder):
             _os.makedirs(paste_folder)
         for file in files:
