@@ -1,15 +1,14 @@
 from fileFolderUI import FileFolderUI
 import submain
 
-# pyinstaller --onefile --noconsole --name VLR_Patch_Automatique --icon=./ressource/DreamteamLogo.ico main.py
+# pyinstaller --onefile --noconsole --name VLR_Patch_Auto --icon=./ressource/DreamteamLogo.ico main.py
 
 
 def process(instance_worker):
-    """fonction passée au l'instance de l'UI
+    """function send as parameter of the instance of the UI
 
     Args:
-        instance_worker (worker): permet de modifier la valeur de la barre
-        de progression, et le texte de progression
+        instance_worker (worker): to change progress bar and progress text
     """
     submain.get_bin_vlr()
 
