@@ -36,6 +36,15 @@ def recup_bin_ze_et_chemin_steam():
     return chemin_fichier
 
 
+def copy_fnt_fr_in_patch_res():
+    source = "VLR_patch_data\\fnt_fr\\"
+    destination = "VLR_patch_data\\patch_res\\"
+
+    for fichier in os.listdir(source):
+        chemin_source = os.path.join(source, fichier)
+        chemin_destination = os.path.join(destination, fichier)
+
+        shutil.copy2(chemin_source, chemin_destination)
 
 
 def recompiler_jeu(chemin_bin_steam):
@@ -48,11 +57,11 @@ def recompiler_jeu(chemin_bin_steam):
     if os.path.exists(chemin_bin_us_logiciel):
         os.remove(chemin_bin_us_logiciel)
     zeVLRtool.patch_fichiers()
+    copy_fnt_fr_in_patch_res()
     zeVLRtool.repack_ze2_bin()
     time.sleep(0.3)
     os.rename("VLR_patch_data\\patch_bin\\ze2_data_jp.bin", chemin_bin_us_logiciel)
     shutil.move(chemin_bin_us_logiciel, chemin_bin_steam)
-
 
 
 def gestion_NOVEL(instance_worker):
