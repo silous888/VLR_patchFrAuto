@@ -28,7 +28,7 @@ def recup_bin_ze_et_chemin_steam():
         str: chemin du ze1_data.bin du dossier steam du jeu
     """
     chemin_fichier = steam.trouver_bin_zero_escape("ze2_data_en_us")
-    utils.logging.error(chemin_fichier)
+    # utils.logging.error(chemin_fichier)
     if not os.path.exists("VLR_patch_data\\org_bin\\ze2_data_jp.bin") and not os.path.exists("VLR_patch_data\\org_bin\\ze2_data_en_us.bin"):
         steam.copier_bin_dans_VLR_data_patch(chemin_fichier)
     if not os.path.exists("VLR_patch_data\\org_bin\\ze2_data_jp.bin") and os.path.exists("VLR_patch_data\\org_bin\\ze2_data_en_us.bin"):
