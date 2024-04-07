@@ -149,10 +149,7 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_images">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
+   <widget class="QCheckBox" name="checkBox_imagesDDS">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -162,10 +159,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>Update tous les PNG (petites images)</string>
+     <string>Update toutes les images du dossier DDS</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_imagesDDS">
+   <widget class="QCheckBox" name="checkBox_imagesZIP">
     <property name="enabled">
      <bool>false</bool>
     </property>
@@ -205,8 +202,8 @@
    <zorder>label_done</zorder>
    <zorder>label_process</zorder>
    <zorder>checkBox_fichiers</zorder>
-   <zorder>checkBox_images</zorder>
    <zorder>checkBox_imagesDDS</zorder>
+   <zorder>checkBox_imagesZIP</zorder>
    <zorder>checkBox_videos</zorder>
   </widget>
  </widget>

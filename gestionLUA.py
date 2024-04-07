@@ -11,7 +11,7 @@ def modifier_texte_dans_fichier(nom_fichier, mat):
 
     # utils.logging.error(DOSSIER_LUA_DIALOGUE + nom_fichier + " on est lecture")
     with open(DOSSIER_LUA_DIALOGUE + nom_fichier, 'r', encoding='utf-8') as fichier:
-        utils.logging.error(DOSSIER_LUA_DIALOGUE + nom_fichier + " on est lecture 2")
+        # utils.logging.error(DOSSIER_LUA_DIALOGUE + nom_fichier + " on est lecture 2")
         contenu_lua = fichier.read()
         # utils.logging.error(DOSSIER_LUA_DIALOGUE + nom_fichier + " on est lecture 3")
 

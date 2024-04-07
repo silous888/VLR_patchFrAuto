@@ -8,7 +8,8 @@ import utils
 import os
 import shutil
 import time
-#import ImageTelechargement
+from API import google_drive_api
+# import ImageTelechargement
 
 
 TOTAL_PROGRESSION = (
@@ -77,6 +78,7 @@ def gestion_NOVEL(instance_worker):
             modif_fichier_lua(instance_worker, fichier, matSheet.NomsColonnes.DIALOGUE)
             incrementer_progression(instance_worker)
 
+
 def gestion_ESCAPE(instance_worker):
     """modifie les fichiers ESCAPE
 
@@ -89,6 +91,7 @@ def gestion_ESCAPE(instance_worker):
             update_texte_progression(instance_worker, fichier)
             modif_fichier_lua(instance_worker, fichier, matSheet.NomsColonnes.DIALOGUE)
             incrementer_progression(instance_worker)
+
 
 def gestion_SYSTEM(instance_worker):
     """modifie les fichiers ESCAPE
@@ -104,7 +107,6 @@ def gestion_SYSTEM(instance_worker):
             incrementer_progression(instance_worker)
 
 
-
 def modif_fichier_lua(instance_worker, fichier, nomColonne):
     """modifier un fichier lua avec les valeurs récupérées dans le sheet
     associé, et enregistre le fichier
@@ -112,7 +114,7 @@ def modif_fichier_lua(instance_worker, fichier, nomColonne):
     Args:
         instance_worker (worker): sert pour update la progression
         fichier (str): fichier à modifier
-        nomColonne (list\[3](str)): noms des colonnes pour ce fichier
+        nomColonne (list[3](str)): noms des colonnes pour ce fichier
         double_id (bool, optional): True si fichier avec double id. Defaults to False.
     """
     instance_worker.set_text_progress(fichier)
@@ -123,26 +125,21 @@ def modif_fichier_lua(instance_worker, fichier, nomColonne):
         gestionLUA.modifier_texte_dans_fichier_system(fichier, mat)
 
 
-
-
-
 def recup_mat_sheet_simplifie(fichier, noms_colonnes):
     """_summary_
 
     Args:
         fichier (str): fichier xml à traiter
-        noms_colonnes (list\[3](str)): noms des colonnes pour ce fichier
+        noms_colonnes (list[3](str)): noms des colonnes pour ce fichier
         double_id (bool, optional): True si fichier avec double id. Defaults to False.
 
     Returns:
-        elementTree, list(element), list(list\[3](str)): arbre, liste des éléments avec texte
+        elementTree, list(element), list(list[3](str)): arbre, liste des éléments avec texte
         et matrice des données importante du sheet
     """
     mat_sheet = googleSheetAPI.get_matrice_sheet(fichier)
     mat_sheet_simp = matSheet.get_matrice_simplifie(mat_sheet, noms_colonnes)
     return mat_sheet_simp
-
-
 
 
 def incrementer_progression(instance_worker, valeur=1):
@@ -167,3 +164,11 @@ def update_texte_progression(instance_worker, message):
         message (str): texte à afficher
     """
     instance_worker.set_text_progress(message)
+
+
+def gestion_images_DDS(instance_worker):
+    if instance_worker.liste_choix_imagesdds[0][0]:
+        id_dds_drive_folder = "1JjiMOCsxVVMy167sdHMYjoXnIn73N3fx"
+        path_dest = "VLR_patch_data\\patch_res\\"
+        update_texte_progression(instance_worker, "téléchargement DDS")
+        _ = google_drive_api.download_files_in_folder(id_dds_drive_folder, path_dest)

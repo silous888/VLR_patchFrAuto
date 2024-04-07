@@ -1,7 +1,7 @@
 from fileFolderUI import FileFolderUI
 import sousMain as sm
-
 # pyinstaller --onefile --noconsole --name VLR_Patch_Automatique --icon=./ressource/DreamteamLogo.ico main.py
+
 
 def process(instance_worker):
     """fonction passée au l'instance de l'UI
@@ -19,9 +19,9 @@ def process(instance_worker):
     sm.gestion_SYSTEM(instance_worker)
     # sm.gestion_DESC(instance_worker)
     # sm.gestion_AUTRE(instance_worker)
-    
+
     # # sm.gestion_images_PNG(instance_worker)
-    # # sm.gestion_images_DDS(instance_worker)
+    sm.gestion_images_DDS(instance_worker)
     # # sm.gestion_videos(instance_worker)
 
     instance_worker.set_value_progressbar(90)

@@ -16,10 +16,7 @@ from utils import etats_liste
 # -------------------- Constant -------------------
 
 
-
 # -------------------- Class -------------------
-
-
 class FileExtensions:
     VIDEOS = [".mp4", ".m4v", ".avi", ".mov", ".wmv"]
     PICTURES = [".jpg", ".png", ".bmp", ".gif", ".tiff"]
@@ -39,12 +36,13 @@ class FileExtensions:
 def _do_nothing1():
     pass
 
+
 def _do_nothing2(str_var):
     pass
 
+
 def _do_nothing3(str_var, list_str_var):
     pass
-
 
 
 # -------------------------------------------------------------------#
@@ -61,13 +59,13 @@ class _Worker(QObject):
     signal_set_text_progress = pyqtSignal(str)
     signal_listes_fichiers_bool = pyqtSignal(list)
     signal_listes_images_bool = pyqtSignal(list)
-    
+
     tailles = [17, 139, 5]
     tailles_images = [9, 6, 5, 10, 10, 4, 9, 3, 9, 4]
     # Initialiser la liste principale
     liste_choix_fichiers = []
-    liste_choix_images = []
-    choix_patch_dds = False
+    liste_choix_imagesdds = []
+    choix_patch_zip = False
     choix_patch_videos = False
 
     def __init__(self):
@@ -92,26 +90,24 @@ class _Worker(QObject):
         for taille in self.tailles:
             liste_interieure = [boolVal] * taille
             self.liste_choix_fichiers.append(liste_interieure)
-    
+
     def change_etats_images(self, boolVal):
-        self.liste_choix_images = []
+        self.liste_choix_imagesdds = []
         for taille in self.tailles_images:
             liste_interieure = [boolVal] * taille
-            self.liste_choix_images.append(liste_interieure)
-            
+            self.liste_choix_imagesdds.append(liste_interieure)
+
     def set_value_progressbar(self, value):
         self.signal_set_value_progressbar.emit(value)
 
     def set_text_progress(self, text):
         self.signal_set_text_progress.emit(text)
-    
+
     def set_choix_fichiers_bool(self, liste):
         self.liste_choix_fichiers = liste
-        
+
     def set_choix_images_bool(self, liste):
-        self.liste_choix_images = liste
-
-
+        self.liste_choix_imagesdds = liste
 
 
 # -------------------------------------------------------------------#
@@ -133,7 +129,7 @@ class _MainWindow(QMainWindow):
         self.m_worker.moveToThread(self.m_thread)
 
         self.progress_bar = QProgressBar(self.ui.centralwidget)
-        self.progress_bar.setRange(0,100)
+        self.progress_bar.setRange(0, 100)
         self.progress_bar.setValue(0)
         self.progress_bar.setGeometry(QRect(30, 10, 536, 20))
         self.progress_bar.hide()
@@ -149,8 +145,8 @@ class _MainWindow(QMainWindow):
         # self.ui.pushButton_choix_image.clicked.connect(self.ouvrir_choix_image)
         self.ui.fileEdit_path.textChanged.connect(self.hide_done)
         self.ui.checkBox_fichiers.clicked.connect(self.update_tous_les_fichiers)
-        self.ui.checkBox_images.clicked.connect(self.update_toutes_les_images)
         self.ui.checkBox_imagesDDS.clicked.connect(self.update_toutes_les_imagesDDS)
+        self.ui.checkBox_imagesZIP.clicked.connect(self.update_toutes_les_imagesZIP)
         self.ui.checkBox_videos.clicked.connect(self.update_toutes_les_videos)
         # signals of the thread
         self.m_worker.command.connect(self.m_worker.thread_process)
@@ -180,7 +176,6 @@ class _MainWindow(QMainWindow):
             self.m_worker.process_func1 = _do_nothing1
             self.m_worker.process_func2 = _do_nothing2
 
-
     def update_ui(self):
         if self.has_progressbar:
             self.progress_bar.show()
@@ -194,7 +189,6 @@ class _MainWindow(QMainWindow):
             self.ui.pushButton_process.setGeometry(QRect(240, 70, 75, 23))
             self.ui.label_done.setGeometry(QRect(330, 70, 51, 20))
             self.ui.label_process.setGeometry(QRect(330, 70, 131, 21))
-
 
     def adapt_const_extention_filter(self):
         """adapt extension put in files_extension to the format of the filter of GetOpenFileName"""
@@ -210,13 +204,13 @@ class _MainWindow(QMainWindow):
         """
         if self.is_folder:
             folder = QFileDialog.getExistingDirectory(self, "Choose folder",
-                                                    QDir.currentPath(), QFileDialog.ShowDirsOnly)
+                                                      QDir.currentPath(), QFileDialog.ShowDirsOnly)
             self.ui.fileEdit_path.setText(folder)
         else:
 
             file, _ = QFileDialog.getOpenFileName(self, "Choose file",
-                                                     QDir.currentPath(),
-                                                     filter=self.adapt_const_extention_filter())
+                                                  QDir.currentPath(),
+                                                  filter=self.adapt_const_extention_filter())
             self.ui.fileEdit_path.setText(file)
 
     @pyqtSlot()
@@ -229,7 +223,7 @@ class _MainWindow(QMainWindow):
             folder = self.ui.fileEdit_path.text()
             if os.path.isdir(folder):
                 data = [f for f in os.listdir(folder) if f.endswith(tuple(self.files_extension + self.files_extension_uppercase))]
-                if len(data) !=0:
+                if len(data) != 0:
                     self.disable_ui()
                     self.m_worker.command.emit(folder, data)
         else:
@@ -255,18 +249,18 @@ class _MainWindow(QMainWindow):
     #     self.m_worker.signal_listes_images_bool.emit(checkbox_values_images)
     #     time.sleep(0.3)
     #     self.change_etats_checkbox_images(self.m_worker.liste_choix_images)
-    
+
     @pyqtSlot()
     def update_tous_les_fichiers(self):
         self.m_worker.change_etats_fichiers(self.ui.checkBox_fichiers.isChecked())
 
     @pyqtSlot()
-    def update_toutes_les_images(self):
-        self.m_worker.change_etats_images(self.ui.checkBox_images.isChecked())
-    
-    @pyqtSlot()
     def update_toutes_les_imagesDDS(self):
-        self.m_worker.choix_patch_dds = self.ui.checkBox_imagesDDS.isChecked()
+        self.m_worker.change_etats_images(self.ui.checkBox_imagesDDS.isChecked())
+
+    @pyqtSlot()
+    def update_toutes_les_imagesZIP(self):
+        self.m_worker.choix_patch_zip = self.ui.checkBox_imagesZIP.isChecked()
 
     @pyqtSlot()
     def update_toutes_les_videos(self):
@@ -280,15 +274,15 @@ class _MainWindow(QMainWindow):
             self.ui.checkBox_fichiers.setCheckState(Qt.CheckState.PartiallyChecked)
         if etat == -1:
             self.ui.checkBox_fichiers.setCheckState(Qt.CheckState.Unchecked)
-    
+
     def change_etats_checkbox_images(self, liste):
         etat = etats_liste(liste)
         if etat == 1:
-            self.ui.checkBox_images.setCheckState(Qt.CheckState.Checked)
+            self.ui.checkBox_imagesDDS.setCheckState(Qt.CheckState.Checked)
         if etat == 0:
-            self.ui.checkBox_images.setCheckState(Qt.CheckState.PartiallyChecked)
+            self.ui.checkBox_imagesDDS.setCheckState(Qt.CheckState.PartiallyChecked)
         if etat == -1:
-            self.ui.checkBox_images.setCheckState(Qt.CheckState.Unchecked)
+            self.ui.checkBox_imagesDDS.setCheckState(Qt.CheckState.Unchecked)
 
     @pyqtSlot(str)
     def hide_done(self, text):
@@ -303,8 +297,8 @@ class _MainWindow(QMainWindow):
     def enable_ui(self):
         """enable ui when process is done"""
         self.ui.checkBox_fichiers.setEnabled(True)
-        self.ui.checkBox_images.setEnabled(True)
         self.ui.checkBox_imagesDDS.setEnabled(True)
+        self.ui.checkBox_imagesZIP.setEnabled(True)
         self.ui.checkBox_videos.setEnabled(True)
         self.ui.label_process.hide()
         self.ui.label_done.show()
@@ -319,8 +313,8 @@ class _MainWindow(QMainWindow):
     def disable_ui(self):
         """disable ui during the process"""
         self.ui.checkBox_fichiers.setEnabled(False)
-        self.ui.checkBox_images.setEnabled(False)
         self.ui.checkBox_imagesDDS.setEnabled(False)
+        self.ui.checkBox_imagesZIP.setEnabled(False)
         self.ui.checkBox_videos.setEnabled(False)
         self.ui.label_process.show()
         self.ui.label_done.hide()
@@ -339,29 +333,25 @@ class _MainWindow(QMainWindow):
         self.ui.label_process.setText(text)
 
 
-
-
-
-
-
 class FileFolderUI():
     def __init__(self):
         self.app = QApplication(sys.argv)
         self.window = _MainWindow()
-        
+
         self.has_lineedit = True
         self.has_progressbar = False
         self.is_folder = True
         self.files_extension = FileExtensions.DOCUMENTS
         self.process_func = _do_nothing1
-        self.window.define_attribute(self.is_folder, self.has_lineedit, self.has_progressbar, self.files_extension, self.process_func)
+        self.window.define_attribute(self.is_folder, self.has_lineedit, self.has_progressbar,
+                                     self.files_extension, self.process_func)
 
     def run(self):
-        self.window.define_attribute(self.is_folder, self.has_lineedit, self.has_progressbar, self.files_extension, self.process_func)
+        self.window.define_attribute(self.is_folder, self.has_lineedit, self.has_progressbar,
+                                     self.files_extension, self.process_func)
         self.window.update_ui()
         self.window.show()
         sys.exit(self.app.exec())
 
     def get_worker(self):
         return self.window.m_worker
-
