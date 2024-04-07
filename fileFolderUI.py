@@ -224,7 +224,8 @@ class _MainWindow(QMainWindow):
         elif self.is_folder:
             folder = self.ui.fileEdit_path.text()
             if os.path.isdir(folder):
-                data = [f for f in os.listdir(folder) if f.endswith(tuple(self.files_extension + self.files_extension_uppercase))]
+                data = [f for f in os.listdir(folder) if f.endswith(tuple(self.files_extension +
+                                                                          self.files_extension_uppercase))]
                 if len(data) != 0:
                     self.disable_ui()
                     self.m_worker.command.emit(folder, data)
