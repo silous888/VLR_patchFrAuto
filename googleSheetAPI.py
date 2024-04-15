@@ -7,9 +7,9 @@ from credentials import credentials_info
 class DossierDrive:
     """identifiant des différents dossier drive des sheets
     """
-    DIALOGUE = "1Qc0iiVOPD2WwC6q9g68uamYOlzwhKOau"
-    ARCHIVE = "1V2FjlNdRlHkRJSlqnSWEec8OI4BZDIom"
-    SYSTEM = "1kdGXBXRsIPvsJOaiYc0Njpj_LWqkefAu"
+    DIALOGUE = "1WeQi-Qgsz1gyw7wVCD0bn4xokiZkEqa7"
+    ARCHIVE = "1bKi-8WWi441y_CsBnMWK-LmNmo8alU8I"
+    SYSTEM = "1sv3hSNGMT3qqLHbfWfe6Yy8odubVEqrb"
 
 
 
@@ -70,4 +70,3 @@ def get_liste_sheet_dossier(dossier):
             return gc.list_spreadsheet_files(folder_id=dossier)
         except:
             time.sleep(wait_time)
-

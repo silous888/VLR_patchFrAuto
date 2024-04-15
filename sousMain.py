@@ -168,7 +168,7 @@ def update_texte_progression(instance_worker, message):
 
 def gestion_images_DDS(instance_worker):
     if instance_worker.liste_choix_imagesdds[0][0]:
-        id_dds_drive_folder = "1JjiMOCsxVVMy167sdHMYjoXnIn73N3fx"
+        id_dds_drive_folder = "1Fq52zamUcK-8tpUycsx8w8o-j--xQURX"
         path_dest = "VLR_patch_data\\patch_res\\"
         update_texte_progression(instance_worker, "téléchargement DDS")
         _ = google_drive_api.download_files_in_folder(id_dds_drive_folder, path_dest)
