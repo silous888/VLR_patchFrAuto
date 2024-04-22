@@ -35,6 +35,18 @@ def remplace_apostrophe(texte):
     return texte.replace("'", "Ｓ")
 
 
+def remplace_e_aigue(texte):
+    """remplace les apostrophes par le caractère Ｓ
+
+    Args:
+        texte (str): texte à modifier
+
+    Returns:
+        str: texte modifié
+    """
+    return texte.replace("é", "{")
+
+
 def remplace_guillemet(texte):
     """remplace les guillemets par le caractère Ｄ
 

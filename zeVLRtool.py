@@ -25,7 +25,7 @@ def patch_fichiers():
     et les mets dans patch_res"""
     subprocess.run(
         tool_vlr + "patch",
-        shell=True, creationflags=subprocess.CREATE_NO_WINDOW,
+        shell=True
     )
 
 
@@ -33,5 +33,5 @@ def repack_ze2_bin():
     """repack le bin de vlr"""
     subprocess.run(
         tool_vlr + "repack",
-        shell=True, creationflags=subprocess.CREATE_NO_WINDOW,
+        shell=True
     )

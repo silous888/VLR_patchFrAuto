@@ -9,11 +9,11 @@ import os
 import shutil
 import time
 from API import google_drive_api
-# import ImageTelechargement
 
 
 TOTAL_PROGRESSION = (
     len(listeFichier.LISTE_NOM_FICHIER_SYSTEM)
+    + len(listeFichier.LISTE_NOM_FICHIER_ARCHIVE)
     + len(listeFichier.LISTE_NOM_FICHIER_ESCAPE)
     + len(listeFichier.LISTE_NOM_FICHIER_NOVEL)
     + 20
@@ -107,6 +107,16 @@ def gestion_SYSTEM(instance_worker):
             incrementer_progression(instance_worker)
 
 
+def gestion_ARCHIVE(instance_worker):
+    liste_choix_fichiers_ARCHIVE = instance_worker.liste_choix_fichiers[3]
+    for index, fichier in enumerate(listeFichier.LISTE_NOM_FICHIER_ARCHIVE):
+        if liste_choix_fichiers_ARCHIVE[index]:
+            update_texte_progression(instance_worker, fichier)
+            mat = googleSheetAPI.get_matrice_sheet_archive(fichier)
+            gestionLUA.modifier_textes_dans_fichier_archive(fichier, mat)
+            incrementer_progression(instance_worker)
+
+
 def modif_fichier_lua(instance_worker, fichier, nomColonne):
     """modifier un fichier lua avec les valeurs récupérées dans le sheet
     associé, et enregistre le fichier
@@ -121,8 +131,10 @@ def modif_fichier_lua(instance_worker, fichier, nomColonne):
     mat = recup_mat_sheet_simplifie(fichier, nomColonne)
     if nomColonne == matSheet.NomsColonnes.DIALOGUE:
         gestionLUA.modifier_texte_dans_fichier(fichier, mat)
-    else:
+    elif nomColonne == matSheet.NomsColonnes.SYSTEM:
         gestionLUA.modifier_texte_dans_fichier_system(fichier, mat)
+    else:
+        gestionLUA.modifier_textes_dans_fichier_archive(fichier, mat)
 
 
 def recup_mat_sheet_simplifie(fichier, noms_colonnes):

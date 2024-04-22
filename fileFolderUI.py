@@ -60,7 +60,7 @@ class _Worker(QObject):
     signal_listes_fichiers_bool = pyqtSignal(list)
     signal_listes_images_bool = pyqtSignal(list)
 
-    tailles = [17, 139, 5]
+    tailles = [17, 139, 5, 5]
     tailles_images = [9, 6, 5, 10, 10, 4, 9, 3, 9, 4]
     # Initialiser la liste principale
     liste_choix_fichiers = []

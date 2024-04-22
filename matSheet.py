@@ -5,7 +5,7 @@ class NomsColonnes:
 
     DIALOGUE = ["id", "name", "text", "textFr"]
     SYSTEM = ["id", "id", "text", "textFr"]
-
+    ARCHIVE = ["id", "text", "id_JP", "textJp", "id_FR", "textFr"]
 
 
 def get_matrice_simplifie(mat, liste_noms_colonnes):
@@ -13,10 +13,10 @@ def get_matrice_simplifie(mat, liste_noms_colonnes):
 
     Args:
         mat (list(list(str))): toutes les valeurs présentes dans la sheet
-        liste_noms_colonnes (list\[3](str)): les noms des colonnes dont on veut les valeurs
+        liste_noms_colonnes (list[3](str)): les noms des colonnes dont on veut les valeurs
 
     Returns:
-        list(list\[4](str)): matrice avec les données intéressantes
+        list(list[4](str)): matrice avec les données intéressantes
     """
     try:
         position_id, position_name, position_eng, position_fr = get_positions_colonnes(mat[0], liste_noms_colonnes)

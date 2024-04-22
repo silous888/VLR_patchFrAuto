@@ -13,21 +13,19 @@ def process(instance_worker):
     sm.update_texte_progression(instance_worker, "recherche et copie du bin zero escape")
     chemin_bin_steam = sm.recup_bin_ze_et_chemin_steam()
 
-    sm.incrementer_progression(instance_worker, 10)
+    # sm.incrementer_progression(instance_worker, 10)
     sm.gestion_NOVEL(instance_worker)
     sm.gestion_ESCAPE(instance_worker)
     sm.gestion_SYSTEM(instance_worker)
-    # sm.gestion_DESC(instance_worker)
-    # sm.gestion_AUTRE(instance_worker)
+    sm.gestion_ARCHIVE(instance_worker)
 
-    # # sm.gestion_images_PNG(instance_worker)
     sm.gestion_images_DDS(instance_worker)
-    # # sm.gestion_videos(instance_worker)
+    # sm.gestion_videos(instance_worker)
 
     instance_worker.set_value_progressbar(90)
     sm.update_texte_progression(instance_worker, "recompilation du jeu")
     sm.recompiler_jeu(chemin_bin_steam)
-    # sm.incrementer_progression(instance_worker, 10)
+    sm.incrementer_progression(instance_worker, 10)
 
 
 # -------------------- Main code -------------------
