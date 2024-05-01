@@ -163,9 +163,6 @@
     </property>
    </widget>
    <widget class="QCheckBox" name="checkBox_imagesZIP">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -175,13 +172,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>Update tous  les DDS (images de fond)</string>
+     <string>Update tous  les images ZIP</string>
     </property>
    </widget>
    <widget class="QCheckBox" name="checkBox_videos">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
     <property name="geometry">
      <rect>
       <x>20</x>

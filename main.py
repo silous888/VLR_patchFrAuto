@@ -1,6 +1,6 @@
 from fileFolderUI import FileFolderUI
 import sousMain as sm
-# pyinstaller --onefile --noconsole --name VLR_Patch_Automatique --icon=./ressource/DreamteamLogo.ico main.py
+# pyinstaller --onefile --name VLR_Patch_Automatique --icon=./ressource/DreamteamLogo.ico main.py
 
 
 def process(instance_worker):
@@ -20,7 +20,7 @@ def process(instance_worker):
     sm.gestion_ARCHIVE(instance_worker)
 
     sm.gestion_images_DDS(instance_worker)
-    # sm.gestion_videos(instance_worker)
+    sm.gestion_videos(instance_worker)
 
     instance_worker.set_value_progressbar(90)
     sm.update_texte_progression(instance_worker, "recompilation du jeu")

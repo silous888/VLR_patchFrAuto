@@ -184,3 +184,11 @@ def gestion_images_DDS(instance_worker):
         path_dest = "VLR_patch_data\\patch_res\\"
         update_texte_progression(instance_worker, "téléchargement DDS")
         _ = google_drive_api.download_files_in_folder(id_dds_drive_folder, path_dest)
+
+
+def gestion_videos(instance_worker):
+    if instance_worker.choix_patch_videos:
+        id_videos_drive_folder = "14VI_x87y3BQ2Hzgc1kQVq8RZNFhqJJCe"
+        path_dest = "VLR_patch_data\\patch_res\\"
+        update_texte_progression(instance_worker, "téléchargement vidéos")
+        _ = google_drive_api.download_files_in_folder(id_videos_drive_folder, path_dest)

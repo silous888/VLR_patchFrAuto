@@ -55,11 +55,9 @@ class Ui_MainWindow(object):
         self.checkBox_imagesDDS.setGeometry(QtCore.QRect(20, 110, 441, 17))
         self.checkBox_imagesDDS.setObjectName("checkBox_imagesDDS")
         self.checkBox_imagesZIP = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox_imagesZIP.setEnabled(False)
         self.checkBox_imagesZIP.setGeometry(QtCore.QRect(20, 140, 521, 17))
         self.checkBox_imagesZIP.setObjectName("checkBox_imagesZIP")
         self.checkBox_videos = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox_videos.setEnabled(False)
         self.checkBox_videos.setGeometry(QtCore.QRect(20, 170, 501, 20))
         self.checkBox_videos.setObjectName("checkBox_videos")
         self.pushButton_process.raise_()
@@ -90,7 +88,7 @@ class Ui_MainWindow(object):
         self.pushButton_choix_image.setText(_translate("MainWindow", "Choisir images"))
         self.checkBox_fichiers.setText(_translate("MainWindow", "Update tous les fichiers textes"))
         self.checkBox_imagesDDS.setText(_translate("MainWindow", "Update toutes les images du dossier DDS"))
-        self.checkBox_imagesZIP.setText(_translate("MainWindow", "Update tous  les DDS (images de fond)"))
+        self.checkBox_imagesZIP.setText(_translate("MainWindow", "Update tous  les images ZIP"))
         self.checkBox_videos.setText(_translate("MainWindow", "Update les vidéos"))
 from fileEdit import FileEdit
 import ressource_rc
