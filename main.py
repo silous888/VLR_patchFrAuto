@@ -21,6 +21,7 @@ def process(instance_worker):
 
     sm.gestion_images_DDS(instance_worker)
     sm.gestion_videos(instance_worker)
+    sm.gestion_images_ZIP(instance_worker)
 
     instance_worker.set_value_progressbar(90)
     sm.update_texte_progression(instance_worker, "recompilation du jeu")

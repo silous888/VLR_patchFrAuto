@@ -6,6 +6,7 @@
 
 /build
 /dist
+/test
 /__pycache__
 *.pyc
 /VLR_patch_data
@@ -14,3 +15,4 @@ zevlr.exe
 ze2_data_jp.bin
 ze2_data_en_us.bin
 credentials.py
+test.py

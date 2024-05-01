@@ -9,6 +9,7 @@ import os
 import shutil
 import time
 from API import google_drive_api
+import zipfile
 
 
 TOTAL_PROGRESSION = (
@@ -192,3 +193,57 @@ def gestion_videos(instance_worker):
         path_dest = "VLR_patch_data\\patch_res\\"
         update_texte_progression(instance_worker, "téléchargement vidéos")
         _ = google_drive_api.download_files_in_folder(id_videos_drive_folder, path_dest)
+
+
+def gestion_images_ZIP(instance_worker):
+    if instance_worker.choix_patch_zip:
+        id_zip_en_drive_folder = "12zCv9XbRz350yzaTzeWrmskH3ApXeyld"
+        id_zip_fr_drive_folder = "1v05b5SOCDyko3Kz81sHFLOxAA0ddudGC"
+        path_dest = "VLR_patch_data\\patch_res\\"
+        local_folder_dl = ".\\compression_sas\\"
+        if not os.path.exists(local_folder_dl):
+            os.makedirs(local_folder_dl)
+        update_texte_progression(instance_worker, "téléchargement ZIP")
+        for elem in listeFichier.LIST_ZIP_FOLDER:
+            res_elem_drive_fr = google_drive_api.get_id_by_name(elem, id_zip_fr_drive_folder)
+            if not isinstance(res_elem_drive_fr, str):
+                continue
+            res_elem_drive_en = google_drive_api.get_id_by_name(elem, id_zip_en_drive_folder)
+            google_drive_api.download_files_in_folder(res_elem_drive_en, local_folder=local_folder_dl, keep_folders=True)
+            google_drive_api.download_files_in_folder(res_elem_drive_fr, local_folder=local_folder_dl, keep_folders=True)
+            zipdir(local_folder_dl, elem, path_dest)
+            empty_folder(local_folder_dl)
+
+
+def zipdir(path, name, output_dir=None):
+    """zip a folder"""
+    if output_dir is None:
+        output_dir = os.path.dirname(path)
+    zip_file_path = os.path.join(output_dir, name + '.zip')
+
+    with zipfile.ZipFile(zip_file_path, 'w', zipfile.ZIP_DEFLATED) as ziph:
+        for root, dirs, files in os.walk(path):
+            for file in files:
+                ziph.write(os.path.join(root, file),
+                           os.path.relpath(os.path.join(root, file),
+                                           os.path.join(path, '..')))
+
+
+def empty_folder(folder_path):
+    """Empty the contents of a folder.
+
+    Args:
+        folder_path (str): Path to the folder whose contents will be deleted.
+
+    Returns:
+        None
+    """
+    for filename in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print(f"Failed to delete {file_path}. Reason: {e}")
