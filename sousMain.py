@@ -222,11 +222,11 @@ def zipdir(path, name, output_dir=None):
     zip_file_path = os.path.join(output_dir, name + '.zip')
 
     with zipfile.ZipFile(zip_file_path, 'w', zipfile.ZIP_DEFLATED) as ziph:
-        for root, dirs, files in os.walk(path):
+        for root, _, files in os.walk(path):
             for file in files:
-                ziph.write(os.path.join(root, file),
-                           os.path.relpath(os.path.join(root, file),
-                                           os.path.join(path, '..')))
+                file_path = os.path.join(root, file)
+                rel_path = os.path.relpath(file_path, path)
+                ziph.write(file_path, rel_path)
 
 
 def empty_folder(folder_path):
